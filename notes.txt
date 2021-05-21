@@ -1,0 +1,231 @@
+mailed abhijit about devkit contributor access
+
+waiting for developer rights
+waiting for sangeeta's approval for pro license
+after that raise SNOW for pro license with sangeeta's mail
+after that raise SNOW for publisher access
+
+
+ask jerry about increased cost
+ask prannay which performance monitoring report
+ask rishi for quarterly rep
+
+My details:
+	Alias:	INSLX4
+	DL:	GX-SITI-Global-IDA-Cloud-Platform GX-SITI-Global-IDA-Cloud-Platform@shell.com
+	Personnel Number -93023098
+	KPMG gotos- Anchit Mittal(Azure) and Surya Pathak(PBI)
+
+	Github username- shruti-kamath17
+			 Shrugit@1234
+**Raise admin req and install PBI after getting laptop
+
+Rishi - every quarter prepare PBI report to show how many repots published in devkit
+Dusty - every quarter prepare PBBI to show who used Neo sanbox the most
+-----------------------------------------------------------
+IDA platform repo : https://github.com/orgs/sede-x/teams/ida-platform
+Power BI shell repo: https://eu001-sp.shell.com/sites/AAFAA3947/SitePages/Power-BI.aspx
+
+Homepage
+	https://hub.shell.com/
+	You can search for any info you want about shell
+
+Serp 
+	To be filled for entire month before 20th of every month
+	https://sww-serp-portal.europe.shell.com/irj/portal?NavigationTarget=navurl://b9c5090168902febd939c621a23b7eb1
+	WBS Element: ZZIT/007373/01.04.06
+	For working days – 8, for holidays – do not fill, for leave, select Leave and fill 8 hours
+
+IQN
+	Fill on the last working day of every month -  ensure IQN and Serp timesheet matches
+	https://augustus.iqnavigator.com/wicket/wicket/page?x=mnztTX2nGKk
+	Working day, fill 1, Holiday or Leave – fill 0
+	This is for contractors only for their billing, after submitting this, an invoice gets generated n is sent to the respective company
+	To request access to this just mail KB Girish
+
+SERP User access request portal (Need to fill SAM) :
+	Pages - SERP User Access Request Portal - Business Users (shell.com)
+
+Service Now: https://shell.service-now.com/sp?id=sc_home
+
+Skype help: itservicedesk.india@shell.com
+	Here you can ping the team and they will assign a service person who will raise a call on your behalf
+
+To escalate SNOW (Service now) tickets:
+HelpMeIT@shell.com 
+
+Sharepoints:
+	PBI report: https://eu001-sp.shell.com/sites/AAAAB1284/dlhkowpx/SitePages/Home.aspx
+	DE (data engineering): https://eu001-sp.shell.com/sites/AAFAA6278/Collaboration%20Area/Forms/Document%20Set%20Grouped%20View.aspx?FilterField1=Grouping&FilterValue1=Platform%20Team&FilterType1=Text&viewid=9022739d%2D7690%2D4cc3%2Da4df%2Da45fb5c19215&id=%2Fsites%2FAAFAA6278%2FCollaboration%20Area%2FData%20Engineering
+
+Shell inner source:https://github.com/orgs/sede-x/teams/shell-innersource
+
+Azure Devops for scrum board:
+	https://sede-pt.visualstudio.com/
+	PBI should be kept in sprint when we intend to finish
+
+Azure Devops for Sandox creation pipelines:
+	https://dev.azure.com/sede-sc/ITY-CC-CLOUD-SANDBOX/_build
+
+Azure Devops for PowerBI CICD:
+	https://sede-sandbox.visualstudio.com/ExstensionsTesting_GIT
+
+Setting OOO:
+	New meeting
+	Title 	 - Shruti OOO
+	Required - GX-SITI-Global-IDA-Cloud-Platform <GX-SITI-Global-IDA-Cloud-Platform@shell.com>
+	Set Show as = Free
+	Response options = Uncheck request response
+	Select All day
+
+Setting functional mailbox
+	In Service now > change functional mailbox
+		In that >change access on mailbox> add or revoke access> send as permission> specify user's mail id
+	Once request is approved, you will get a mail to follow the below steps:
+		File>Account settings> Account Settings> Change> More Settings> Advanced> Add >Apply
+
+	Functional account: alias-INK717, SITI Global-neo-digital-lab SITI-ITY/F <Global-neo-digital-lab@shell.com>
+	https://shell.service-now.com/sp?id=sc_cat_item&sys_id=d3c12801dbe2df80bd27f9231d96192b
+
+
+Add members to DL(Distribution list):
+	https://mail1-eu.shell.com/ecp/		-click on pencil icon to edit
+	https://shell.service-now.com/sp?id=kb_article_view&sys_id=5501f20adb6d589ce3b56def4b96195a
+
+
+Admin / Developer rights to PC: SNOW req title - Use this form to request that a developer PC be unlocked
+	This is to get admin rights
+Raise this after getting laptop
+
+To raise finance query : https://eu001-sp.shell.com/sites/AAAAA1615/Query%20Sharepoint/Requestor.aspx
+Cost Center: IN02131194
+	This is related to SERP
+	You can reverse timesheets using this
+
+Common interest network (CIN)
+	New venture where 1 pg is dedicated to each team so that ppl can stay connected and interact 
+	Whenever we publish in devkit, we can popularize it by putting into CIN or publishing to Yammer
+
+KT session recording links:
+	https://web.microsoftstream.com/video/d1d2b48c-8e74-4532-8c3e-86fbd8c852ef
+	https://web.microsoftstream.com/video/aa643081-daf2-4709-a680-7a99437fd340
+	https://web.microsoftstream.com/video/d8a1576a-5757-435f-b5d0-5c1bd669ac83	-devkit
+	https://web.microsoftstream.com/video/2b9d1dae-4256-4dd5-976c-6400c62df39b	-scrum board, goals
+	https://web.microsoftstream.com/video/92c954a5-957b-46fb-a032-dd5c5f8e93af	-powerbi report
+---------------------------------------------------------------------------------------------
+
+------------------------Github Branches------------------
+1. Main/master branch
+	Codebase residing in the master branch is considered to be production-ready
+
+2. Feature/topic branch
+	When you start working on a new feature/bug fix, you should create a feature/topic branch. 
+	A feature/topic branch is normally created off a develop/integration branch. 
+	This feature/topic branch can reside in your local machine throughout the entire development lifecycle of the feature.
+	You will push this branch to the remote repository whenever you are ready to merge the change set with the develop/integration branch. 
+
+3. Release branch
+	When you roll out a new release, you create a release branch
+	release branch names normally start with the prefix "release-".
+	When you are ready to release, merge the release branch with the master branch and tag a release number to the newly created merge commit.
+	You should also merge the release branch with the develop/integration branch 
+	so that both the master and develop/integration branches receive the latest changes/bug fixes from the release branch.
+
+4. Hotfix branch
+	When you need to add an important fix to your production codebase quickly, you can create a Hotfix branch off the master branch.
+	By convention, hotfix branch names normally start with the prefix "hotfix-".
+	A hotfix branch should be merged with the develop/integration branch as well.
+
+5. Develop/Integration branch
+	A develop/integration branch should be kept stable at all times. 
+	This is important because new branches are created off of this branch, and this branch could eventually go out live on production.
+
+------------------------Provisioning Sandbox--------------------
+- When a request mail comes send out an acknowledgement mail with 'To'=CC lead who mailed and place the incoming mail to your/Jerry/Anuj's folder
+- On 14th or 29th raise the sandbox by running the pipeline as mentioned in the doc
+- Max life os sandbox is 28 days
+  **we provide sandbox for req like hive hackathon, currently it is provisioned till 31 may. Details are in Hive mail
+- Once the sandbox is created, you will be able to see it under resource groups in azure portal
+- Send out a sandbox proviseioned mail with 'To'= all the users mentioned in the request template and 'CC'=Rishi,Jerry and CC lead who requested
+***Note that even if there are multiple sandbox requests, you will create only 1 sandbox and assign all the members to the AAD group
+So cases that the user can get to access other services too which were not part of his request are fine
+Also if a req comes after sandbox is provisioned and that service is not already included, you can add the service manually in the resource grp
+
+Azure technical assistance-https://shell.service-now.com/sp?id=sc_cat_item_guide&sys_id=2a8fa788db605f40f16ef1951d96199b
+
+Link to recording - https://web.microsoftstream.com/video/26f6271b-ff44-42cc-8e8f-d8bf503a4f7a
+
+Also the sandbox owner is Julio, so we need his approval mail
+Approval mail and Sandbox setup doc in KT 6 mail
+FAQ and how to access SB docs in KT mail 5
+
+**ETSOM team which is part of ITSO team manages sandbox
+Julio leads it and Hubert works for him
+
+**There are 3 platforms – Dna, Azure@shell (sandbox which we create comes under this) and HAHS
+
+----------------------Natural Meetings-----------------
+Meeting with other teams outside IDA - teams like ITSO
+
+It used to be monthly but now as there is reorg in Aug, it is stopped
+Need to prepare decks for the meeting by first discussing with Rishi
+Sample decks in KT mail 3
+
+HSSE – Is for mental well being, Shell has high priority for this
+	At the start of every natural meeting, one of the HSSE topic is discussed
+
+----------------------Power BI CICD POC---------------------
+-Earlier sharepoint was being used for version controlling of PBI reports
+-But here the limitation is that multiple users cant work on the asme report at a given time
+-So they moved to Github
+-However Github doesnt support diffing, so CICD using github directly is not possible
+-So Sherin suggested to store PBI in github and create CICD pipelines using Azure devops
+-But to connect 2 services, we need SPN i.e. service principle either using certificate 
+
+Also in parallel she has asked Stephen if we can achieve the same using itActions
+
+CICD Documentation:
+	https://eu001-sp.shell.com/:w:/r/sites/AAFAA5019/_layouts/15/Doc.aspx?sourcedoc=%7BC8747D96-B6B6-459F-A333-58C801F5D27F%7D&file=QRG_DNA_CICD.docx&action=default&mobileredirect=true&cid=587a6202-1228-4e7f-ab73-02d2b5775542
+
+
+--------------------Power BI reports------------------------
+Shell Power BI portal - https://eu001-sp.shell.com/sites/AAFAA3947/SitePages/Power-BI.aspx
+Shell power BI certification material - https://eu001-sp.shell.com/sites/AAFAA3947/SitePages/Training.aspx
+
+1. 1 day before the expiry of sandox, create log activity and cost analysis report
+   Currently it is a manual process in which we are mainitaining excel file in sharepoint
+  That excel file is created manually - 1st sheet to store sandbox details, 2nd sheet for services provisioned, 3rd for cost and 4th for log
+   I think we can automate it as below - using adf. store the details in sql or ecel 
+
+2. For Rishi - at end of every quarter give report to show devkit doc published so that he can publish to yammer
+
+3. For Dusty - at end of every quarter give report to show best user of Neo for the quarter
+
+
+---------------------DEVKIT-----------------------
+Portal - https://devkit.shell.com/   
+	Here final doc are published
+
+Repo-  https://github.com/sede-x/devkit-content-source
+
+-It is a knowledge management repository
+-Docs are created using markdown language and get stored as .md files in gihub repo called devkit-content-source
+-Markdown is similar to HTML <h1> -> # . <h2>-> ##
+-Images in toos/images all in png
+-Page always as Tools&services
+-Slug- /content/tools/.mdfilename
+
+Link to recording - https://web.microsoftstream.com/video/d951e775-3212-4f90-943d-6d0763ed58db
+
+Refer azurednasecurityprinciples.md present in repo  for reference
+
+1. Open portal and create new > fill in the details> do validation to get the 1st 6 lines of code to be used in .md
+2. In repo, create a new branch with ur retport type name e.g powerbi and create the .md files by 1st pasting the above created 6 lines of code
+3. Publish to ur branch and create pull req to merge with Main branch
+
+Mail abt details - Devkit Portal Documentation
+
+
+
+******KT 4 and Azure Gold and silver environment pending to check
+GOALS present in updated plan mail
