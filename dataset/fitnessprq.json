@@ -1,0 +1,21 @@
+{
+	"name": "fitnessprq",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStoraget1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "stg",
+				"fileSystem": "fitness"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
