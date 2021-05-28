@@ -1,9 +1,0 @@
-{
-	"name": "ashshelladf1",
-	"location": "eastus",
-	"identity": {
-		"type": "SystemAssigned",
-		"principalId": "86635328-e007-4a10-ab20-57e96a52b52d",
-		"tenantId": "db1e96a8-a3da-442a-930b-235cac24cd5c"
-	}
-}
