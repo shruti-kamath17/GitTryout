@@ -1,0 +1,200 @@
+{
+	"name": "P_GooglePlaceData_Review",
+	"properties": {
+		"activities": [
+			{
+				"name": "forEachPlaceID",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "GetPlaceIDList",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('GetPlaceIDList').output.value",
+						"type": "Expression"
+					},
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "CopyReviewData",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "RestSource",
+									"httpRequestTimeout": "00:01:40",
+									"requestInterval": "00.00:00:00.010",
+									"requestMethod": "GET"
+								},
+								"sink": {
+									"type": "AzureSqlSink",
+									"disableMetricsCollection": false
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"mappings": [
+										{
+											"source": {
+												"path": "['author_name']"
+											},
+											"sink": {
+												"name": "author_name",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "['language']"
+											},
+											"sink": {
+												"name": "review_lang_cd",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "['rating']"
+											},
+											"sink": {
+												"name": "review_rating",
+												"type": "Decimal"
+											}
+										},
+										{
+											"source": {
+												"path": "['text']"
+											},
+											"sink": {
+												"name": "review_text",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "['time']"
+											},
+											"sink": {
+												"name": "review_gtime",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['result']['place_id']"
+											},
+											"sink": {
+												"name": "place_id",
+												"type": "String"
+											}
+										}
+									],
+									"collectionReference": "$['result']['reviews']",
+									"mapComplexValuesToString": true
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "RestResource1",
+									"type": "DatasetReference",
+									"parameters": {
+										"placeapiurl": {
+											"value": "@item().apiurl",
+											"type": "Expression"
+										}
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "tabGoPlaceReviews",
+									"type": "DatasetReference"
+								}
+							]
+						}
+					]
+				}
+			},
+			{
+				"name": "GetPlaceIDList",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "tabGoPlaceMst",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "SP_UPSERT_Review",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "forEachPlaceID",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[pr_merge_goplace_reviews]"
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"variables": {
+			"apiurl": {
+				"type": "String"
+			},
+			"result": {
+				"type": "String"
+			},
+			"placeid": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2021-06-05T16:36:46Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

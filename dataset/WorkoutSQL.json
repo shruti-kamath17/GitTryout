@@ -1,0 +1,95 @@
+{
+	"name": "WorkoutSQL",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "WORKTYPE",
+				"type": "varchar"
+			},
+			{
+				"name": "DURATIONMINS",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "MAXHEARTRATE",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "AVGHEARTRATE",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "DISTANCEKM",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "AVGSPEED",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "STEPCOUNT",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "STEPCADENCE",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 3
+			},
+			{
+				"name": "FLIGHTSCLIMBED",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ACTIVECAL",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "TOTALCAL",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "STARTTS",
+				"type": "smalldatetime",
+				"precision": 16,
+				"scale": 0
+			},
+			{
+				"name": "ENDTS",
+				"type": "smalldatetime",
+				"precision": 16,
+				"scale": 0
+			},
+			{
+				"name": "STARTDT",
+				"type": "date"
+			},
+			{
+				"name": "ENDDT",
+				"type": "date"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "workout"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

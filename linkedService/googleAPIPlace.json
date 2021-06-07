@@ -1,0 +1,14 @@
+{
+	"name": "googleAPIPlace",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"description": "Google Place api",
+		"annotations": [],
+		"type": "RestService",
+		"typeProperties": {
+			"url": "https://maps.googleapis.com/",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Anonymous"
+		}
+	}
+}

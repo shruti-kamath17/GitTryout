@@ -1,0 +1,314 @@
+{
+	"name": "P_GooglePlaceData",
+	"properties": {
+		"activities": [
+			{
+				"name": "forEachPlaceID",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "GetPlaceIDList",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('GetPlaceIDList').output.value",
+						"type": "Expression"
+					},
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "CopyPlaceDetails",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "RestSource",
+									"httpRequestTimeout": "00:01:40",
+									"requestInterval": "00.00:00:00.010",
+									"requestMethod": "GET"
+								},
+								"sink": {
+									"type": "AzureSqlSink",
+									"sqlWriterStoredProcedureName": "[dbo].[pr_goplace_details1]",
+									"sqlWriterTableType": "goplace_details_TVP",
+									"storedProcedureTableTypeParameterName": "TableValue"
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"mappings": [
+										{
+											"source": {
+												"path": "$['result']['place_id']"
+											},
+											"sink": {
+												"name": "place_id",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['result']['formatted_address']"
+											},
+											"sink": {
+												"name": "formatted_address",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['result']['geometry']['location']['lat']"
+											},
+											"sink": {
+												"name": "lat",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['result']['geometry']['location']['lng']"
+											},
+											"sink": {
+												"name": "lng",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['result']['name']"
+											},
+											"sink": {
+												"name": "sitename",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['result']['price_level']"
+											},
+											"sink": {
+												"name": "price_level",
+												"type": "Decimal"
+											}
+										},
+										{
+											"source": {
+												"path": "$['result']['rating']"
+											},
+											"sink": {
+												"name": "Site_rating",
+												"type": "Decimal"
+											}
+										},
+										{
+											"source": {
+												"path": "$['result']['url']"
+											},
+											"sink": {
+												"name": "mapurl",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['result']['user_ratings_total']"
+											},
+											"sink": {
+												"name": "user_ratings_total",
+												"type": "Int32"
+											}
+										},
+										{
+											"source": {
+												"path": "$['result']['website']"
+											},
+											"sink": {
+												"name": "website",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['result']['types'][0]"
+											},
+											"sink": {
+												"name": "site_type",
+												"type": "String"
+											}
+										}
+									],
+									"collectionReference": "",
+									"mapComplexValuesToString": true
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "RestResource1",
+									"type": "DatasetReference",
+									"parameters": {
+										"placeapiurl": {
+											"value": "@item().apiurl",
+											"type": "Expression"
+										}
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "tabGoPlaceDetails",
+									"type": "DatasetReference"
+								}
+							]
+						},
+						{
+							"name": "CopyRatingHistory",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "RestSource",
+									"httpRequestTimeout": "00:01:40",
+									"requestInterval": "00.00:00:00.010",
+									"requestMethod": "GET"
+								},
+								"sink": {
+									"type": "AzureSqlSink"
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"mappings": [
+										{
+											"source": {
+												"path": "$['result']['place_id']"
+											},
+											"sink": {
+												"name": "place_id",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['result']['rating']"
+											},
+											"sink": {
+												"name": "place_rating",
+												"type": "Decimal"
+											}
+										},
+										{
+											"source": {
+												"path": "$['result']['user_ratings_total']"
+											},
+											"sink": {
+												"name": "user_ratings_total",
+												"type": "Int32"
+											}
+										}
+									],
+									"collectionReference": "",
+									"mapComplexValuesToString": false
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "RestResource1",
+									"type": "DatasetReference",
+									"parameters": {
+										"placeapiurl": {
+											"value": "@item().apiurl",
+											"type": "Expression"
+										}
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "tabGoPlaceRateHistory",
+									"type": "DatasetReference"
+								}
+							]
+						}
+					]
+				}
+			},
+			{
+				"name": "GetPlaceIDList",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "tabGoPlaceMst",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "p_LoadGoPlaceReview",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "forEachPlaceID",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "P_GooglePlaceData_Review",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"variables": {
+			"apiurl": {
+				"type": "String"
+			},
+			"result": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2021-06-05T16:38:49Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

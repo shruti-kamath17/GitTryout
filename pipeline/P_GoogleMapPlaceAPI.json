@@ -1,0 +1,84 @@
+{
+	"name": "P_GoogleMapPlaceAPI",
+	"properties": {
+		"description": "P_GoogleMapPlaceAPI",
+		"activities": [
+			{
+				"name": "Web1",
+				"type": "WebActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://maps.googleapis.com:443/maps/api/place/details/json?key=AIzaSyAuQQF_jQOAFvFZ-33LjBsc7nWoIwE0szg&placeid=ChIJYxaa0XUTrjsRoYx61OVfz34",
+					"method": "GET"
+				}
+			},
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Web1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Web1').output.result.reviews",
+						"type": "Expression"
+					},
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "ReviewRating",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "ReviewRating",
+								"value": {
+									"value": "@string(item().rating)",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "ReviewComment",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "ReviewComments",
+								"value": {
+									"value": "@item().text",
+									"type": "Expression"
+								}
+							}
+						}
+					]
+				}
+			}
+		],
+		"variables": {
+			"ReviewRating": {
+				"type": "String"
+			},
+			"ReviewComments": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2021-05-31T16:02:13Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

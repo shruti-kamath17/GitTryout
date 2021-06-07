@@ -1,0 +1,25 @@
+{
+	"name": "LoadGoPlaceDetails",
+	"properties": {
+		"description": "Load GoPlace Details",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "P_GooglePlaceData",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2021-06-06T23:45:00",
+				"timeZone": "India Standard Time"
+			}
+		}
+	}
+}

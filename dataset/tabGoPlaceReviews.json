@@ -1,0 +1,67 @@
+{
+	"name": "tabGoPlaceReviews",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "place_id",
+				"type": "nvarchar"
+			},
+			{
+				"name": "author_name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "review_lang_cd",
+				"type": "nvarchar"
+			},
+			{
+				"name": "review_rating",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "review_text",
+				"type": "nvarchar"
+			},
+			{
+				"name": "review_gtime",
+				"type": "nvarchar"
+			},
+			{
+				"name": "review_date",
+				"type": "date"
+			},
+			{
+				"name": "review_time",
+				"type": "time",
+				"scale": 7
+			},
+			{
+				"name": "review_DTM",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "review_sentiment",
+				"type": "nvarchar"
+			},
+			{
+				"name": "rec_TS",
+				"type": "timestamp"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "goplace_reviews"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

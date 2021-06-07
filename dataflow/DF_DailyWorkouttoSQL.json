@@ -1,0 +1,28 @@
+{
+	"name": "DF_DailyWorkouttoSQL",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "WorkoutParquet",
+						"type": "DatasetReference"
+					},
+					"name": "stgprqfiels"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "WorkoutSQL",
+						"type": "DatasetReference"
+					},
+					"name": "toSQLTAB"
+				}
+			],
+			"transformations": [],
+			"script": "source(output(\n\t\tType as string,\n\t\tDuration as timestamp,\n\t\tMaxHeartRate as double,\n\t\tAvgHeartRate as double,\n\t\tDistanceKM as double,\n\t\tAvgSpeed as double,\n\t\tStepCount as double,\n\t\tStepCadence as double,\n\t\tFlightsClimbed as double,\n\t\tActiveCal as double,\n\t\tTotalCal as double,\n\t\tDurationMins as integer,\n\t\tStartTS as timestamp,\n\t\tEndTS as timestamp,\n\t\tStartDT as date,\n\t\tEndDT as date\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tformat: 'parquet',\n\twildcardPaths:['stg/dayWorkout.parquet'],\n\tpartitionBy('hash', 1)) ~> stgprqfiels\nstgprqfiels sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinput(\n\t\tWORKTYPE as string,\n\t\tDURATIONMINS as integer,\n\t\tMAXHEARTRATE as integer,\n\t\tAVGHEARTRATE as integer,\n\t\tDISTANCEKM as decimal(10,2),\n\t\tAVGSPEED as decimal(10,2),\n\t\tSTEPCOUNT as integer,\n\t\tSTEPCADENCE as decimal(10,3),\n\t\tFLIGHTSCLIMBED as integer,\n\t\tACTIVECAL as integer,\n\t\tTOTALCAL as integer,\n\t\tSTARTTS as timestamp,\n\t\tENDTS as timestamp,\n\t\tSTARTDT as date,\n\t\tENDDT as date\n\t),\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:false,\n\tupsertable:false,\n\tformat: 'table',\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError',\n\tmapColumn(\n\t\tWORKTYPE = Type,\n\t\tDURATIONMINS = DurationMins,\n\t\tMAXHEARTRATE = MaxHeartRate,\n\t\tAVGHEARTRATE = AvgHeartRate,\n\t\tDISTANCEKM = DistanceKM,\n\t\tAVGSPEED = AvgSpeed,\n\t\tSTEPCOUNT = StepCount,\n\t\tSTEPCADENCE = StepCadence,\n\t\tFLIGHTSCLIMBED = FlightsClimbed,\n\t\tACTIVECAL = ActiveCal,\n\t\tTOTALCAL = TotalCal,\n\t\tSTARTTS = StartTS,\n\t\tENDTS = EndTS,\n\t\tSTARTDT = StartDT,\n\t\tENDDT = EndDT\n\t),\n\tpartitionBy('hash', 1)) ~> toSQLTAB"
+		}
+	}
+}

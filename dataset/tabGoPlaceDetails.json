@@ -1,0 +1,71 @@
+{
+	"name": "tabGoPlaceDetails",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "place_id",
+				"type": "nvarchar"
+			},
+			{
+				"name": "formatted_address",
+				"type": "nvarchar"
+			},
+			{
+				"name": "lat",
+				"type": "nvarchar"
+			},
+			{
+				"name": "lng",
+				"type": "nvarchar"
+			},
+			{
+				"name": "name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "price_level",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "Site_rating",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "mapurl",
+				"type": "nvarchar"
+			},
+			{
+				"name": "user_ratings_total",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "website",
+				"type": "nvarchar"
+			},
+			{
+				"name": "site_type",
+				"type": "nvarchar"
+			},
+			{
+				"name": "rec_TS",
+				"type": "timestamp"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "goplace_details"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

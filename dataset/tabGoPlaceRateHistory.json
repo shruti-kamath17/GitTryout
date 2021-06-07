@@ -1,0 +1,37 @@
+{
+	"name": "tabGoPlaceRateHistory",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "place_id",
+				"type": "nvarchar"
+			},
+			{
+				"name": "place_rating",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "user_ratings_total",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "rec_TS",
+				"type": "timestamp"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "goplace_rating_his"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
